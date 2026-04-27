@@ -33,6 +33,10 @@ Main release files:
 - [Dockerfile](C:\Users\Administrator\Documents\New%20project\whatsapp-relief-system\Dockerfile)
 - [DEPLOYMENT.md](C:\Users\Administrator\Documents\New%20project\whatsapp-relief-system\DEPLOYMENT.md)
 
+One-click deploy:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dheerendersirohi-afk/drka-disaster-response)
+
 Fastest release path:
 
 1. Push this project to GitHub
