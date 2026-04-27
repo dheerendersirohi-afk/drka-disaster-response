@@ -3,7 +3,7 @@
 This workspace contains two connected parts:
 
 1. The DRKA MVP app in the repository root
-2. The public disaster response dashboard in [whatsapp-relief-system](C:\Users\Administrator\Documents\New%20project\whatsapp-relief-system)
+2. The public disaster response dashboard in `whatsapp-relief-system/`
 
 ## DRKA MVP
 
@@ -29,19 +29,25 @@ The disaster response dashboard/API is already prepared for web deployment.
 
 Main release files:
 
-- [render.yaml](C:\Users\Administrator\Documents\New%20project\render.yaml)
-- [Dockerfile](C:\Users\Administrator\Documents\New%20project\whatsapp-relief-system\Dockerfile)
-- [DEPLOYMENT.md](C:\Users\Administrator\Documents\New%20project\whatsapp-relief-system\DEPLOYMENT.md)
+- [`render.yaml`](./render.yaml)
+- [`whatsapp-relief-system/Dockerfile`](./whatsapp-relief-system/Dockerfile)
+- [`whatsapp-relief-system/DEPLOYMENT.md`](./whatsapp-relief-system/DEPLOYMENT.md)
 
 One-click deploy:
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dheerendersirohi-afk/drka-disaster-response)
 
+GitHub Pages showcase:
+
+[DRKA Showcase Site](https://dheerendersirohi-afk.github.io/drka-disaster-response/)
+
+If you only want a web showcase and not a live backend, GitHub Pages is enough. The static showcase files are in [`docs/`](./docs).
+
 Fastest release path:
 
 1. Push this project to GitHub
 2. Create a Render service from the repo
-3. Let Render use [render.yaml](C:\Users\Administrator\Documents\New%20project\render.yaml)
+3. Let Render use [`render.yaml`](./render.yaml)
 4. After deploy, open:
    - `/`
    - `/api/disaster-reports`

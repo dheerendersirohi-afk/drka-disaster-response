@@ -1,0 +1,167 @@
+[
+  {
+    "reportId": "WA-1745751000000-3210",
+    "requestType": "medical",
+    "allRequestTypes": ["medical", "information"],
+    "urgency": "high",
+    "primaryLocation": "Delhi",
+    "primaryContact": "+919876543210",
+    "originalMessage": "Need medical and information support in Delhi, Delhi. One elderly patient needs oxygen support near Yamuna Pushta. Contact 9876543210.",
+    "messageTimestamp": "2026-04-27T15:40:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Delhi Flood Response",
+      "senderName": "Field Volunteer"
+    }
+  },
+  {
+    "reportId": "WA-1745751600000-6789",
+    "requestType": "food",
+    "allRequestTypes": ["food", "water"],
+    "urgency": "medium",
+    "primaryLocation": "Haridwar",
+    "primaryContact": "+919123456789",
+    "originalMessage": "Need food and water support in Haridwar, Uttarakhand. Food packets and clean water needed for 35 people. Contact 9123456789.",
+    "messageTimestamp": "2026-04-27T15:46:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Uttarakhand Relief Updates",
+      "senderName": "Camp Coordinator"
+    }
+  },
+  {
+    "reportId": "WA-1745752200000-5555",
+    "requestType": "rescue",
+    "allRequestTypes": ["rescue", "transport"],
+    "urgency": "high",
+    "primaryLocation": "Jammu",
+    "primaryContact": "+919455555555",
+    "originalMessage": "Need rescue and transport support in Jammu, Jammu and Kashmir. Two families are stranded and need boat or vehicle evacuation. Contact 9455555555.",
+    "messageTimestamp": "2026-04-27T15:52:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "North India Emergency Ops",
+      "senderName": "District Responder"
+    }
+  },
+  {
+    "reportId": "WA-1745752800000-2020",
+    "requestType": "shelter",
+    "allRequestTypes": ["shelter", "clothing"],
+    "urgency": "medium",
+    "primaryLocation": "Jaipur",
+    "primaryContact": "+919020202020",
+    "originalMessage": "Need shelter and clothing support in Jaipur, Rajasthan. Temporary shelter and blankets required for displaced workers. Contact 9020202020.",
+    "messageTimestamp": "2026-04-27T15:58:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Rajasthan Disaster Support",
+      "senderName": "Ward Contact"
+    }
+  },
+  {
+    "reportId": "WA-1745753400000-1005",
+    "requestType": "food",
+    "allRequestTypes": ["food", "medical"],
+    "urgency": "high",
+    "primaryLocation": "Lucknow",
+    "primaryContact": "+919010001005",
+    "originalMessage": "Need food and medical support in Lucknow, Uttar Pradesh. Cooked meals and diabetes medicines needed for families in a low-lying colony. Contact 9010001005.",
+    "messageTimestamp": "2026-04-27T16:04:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "UP Relief Command",
+      "senderName": "Relief Officer"
+    }
+  },
+  {
+    "reportId": "WA-1745762400000-1020",
+    "requestType": "rescue",
+    "allRequestTypes": ["rescue", "transport"],
+    "urgency": "high",
+    "primaryLocation": "Roorkee",
+    "primaryContact": "+919010001020",
+    "originalMessage": "Need rescue and transport support in Roorkee, Uttarakhand. Several households are cut off and need immediate evacuation support. Contact 9010001020.",
+    "messageTimestamp": "2026-04-27T17:34:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Uttarakhand Rescue Network",
+      "senderName": "Boat Team Lead"
+    }
+  },
+  {
+    "reportId": "WA-1745769000000-1031",
+    "requestType": "medical",
+    "allRequestTypes": ["medical", "shelter"],
+    "urgency": "high",
+    "primaryLocation": "Kolkata",
+    "primaryContact": "+919010001031",
+    "originalMessage": "Need medical and shelter support in Kolkata, West Bengal. People moved from a riverside settlement need medicines and indoor shelter. Contact 9010001031.",
+    "messageTimestamp": "2026-04-27T18:40:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Kolkata Relief Cell",
+      "senderName": "Civic Volunteer"
+    }
+  },
+  {
+    "reportId": "WA-1745771400000-1035",
+    "requestType": "rescue",
+    "allRequestTypes": ["rescue", "water"],
+    "urgency": "high",
+    "primaryLocation": "Bhubaneswar",
+    "primaryContact": "+919010001035",
+    "originalMessage": "Need rescue and water support in Bhubaneswar, Odisha. Waterlogging is severe and stranded families need rescue plus clean water. Contact 9010001035.",
+    "messageTimestamp": "2026-04-27T19:04:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Odisha Disaster Support",
+      "senderName": "Coastal Volunteer"
+    }
+  },
+  {
+    "reportId": "WA-1745773200000-1038",
+    "requestType": "medical",
+    "allRequestTypes": ["medical", "rescue"],
+    "urgency": "high",
+    "primaryLocation": "Mumbai",
+    "primaryContact": "+919010001038",
+    "originalMessage": "Need medical and rescue support in Mumbai, Maharashtra. Senior citizens in a flooded chawl need medical aid and safe evacuation. Contact 9010001038.",
+    "messageTimestamp": "2026-04-27T19:22:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Mumbai Rain Response",
+      "senderName": "Local Rescue Volunteer"
+    }
+  },
+  {
+    "reportId": "WA-1745773800000-1039",
+    "requestType": "food",
+    "allRequestTypes": ["food", "water"],
+    "urgency": "medium",
+    "primaryLocation": "Bengaluru",
+    "primaryContact": "+919010001039",
+    "originalMessage": "Need food and water support in Bengaluru, Karnataka. Apartment residents need meal packets and drinking water after prolonged outage. Contact 9010001039.",
+    "messageTimestamp": "2026-04-27T19:28:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Karnataka Relief Network",
+      "senderName": "Resident Volunteer"
+    }
+  },
+  {
+    "reportId": "WA-1745774400000-1040",
+    "requestType": "shelter",
+    "allRequestTypes": ["shelter", "medical"],
+    "urgency": "medium",
+    "primaryLocation": "Chennai",
+    "primaryContact": "+919010001040",
+    "originalMessage": "Need shelter and medical support in Chennai, Tamil Nadu. Flood-affected families need shelter space and medicines for chronic patients. Contact 9010001040.",
+    "messageTimestamp": "2026-04-27T19:34:00.000+05:30",
+    "status": "pending",
+    "source": {
+      "groupName": "Tamil Nadu Flood Support",
+      "senderName": "Community Health Worker"
+    }
+  }
+]
