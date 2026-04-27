@@ -16,7 +16,8 @@ const reportCount = document.getElementById("reportCount");
 const filterType = document.getElementById("filterType");
 const filterUrgency = document.getElementById("filterUrgency");
 const searchBox = document.getElementById("searchBox");
-const DATA_VERSION = "20260427-40";
+const statusNotice = document.getElementById("statusNotice");
+const DATA_VERSION = "20260427-41";
 
 let allReports = [];
 
@@ -33,6 +34,130 @@ function formatRequestTypeLabel(value) {
     return String(value)
         .replace(/_/g, " ")
         .replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function showNotice(message, tone = "info") {
+    if (!statusNotice) {
+        return;
+    }
+
+    statusNotice.textContent = message;
+    statusNotice.className = `notice visible ${tone}`;
+}
+
+function clearNotice() {
+    if (!statusNotice) {
+        return;
+    }
+
+    statusNotice.textContent = "";
+    statusNotice.className = "notice";
+}
+
+function normalizeWhatsAppNumber(value) {
+    return String(value || "").replace(/\D/g, "");
+}
+
+function getLocationShareMessage(report, latitude, longitude) {
+    const lat = Number(latitude).toFixed(6);
+    const lng = Number(longitude).toFixed(6);
+    const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(`${lat},${lng}`)}`;
+    const senderName = report?.source?.senderName || "Responder";
+    const reportLocation = report?.primaryLocation || "reported area";
+
+    return [
+        `GPS location update from ${senderName}`,
+        `For request: ${report?.reportId || "unknown"}`,
+        `Reported area: ${reportLocation}`,
+        `Current location: ${lat}, ${lng}`,
+        `Map: ${mapUrl}`,
+    ].join("\n");
+}
+
+async function copyShareMessage(message) {
+    if (!navigator.clipboard?.writeText) {
+        return false;
+    }
+
+    try {
+        await navigator.clipboard.writeText(message);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+function handleLocationError(error) {
+    if (!error) {
+        showNotice("Unable to read your location right now.", "error");
+        return;
+    }
+
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            showNotice("Location permission was denied. Allow location access and try again.", "error");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            showNotice("Location is unavailable on this device right now.", "error");
+            break;
+        case error.TIMEOUT:
+            showNotice("Location request timed out. Please try again.", "error");
+            break;
+        default:
+            showNotice("Unable to fetch your current location.", "error");
+            break;
+    }
+}
+
+function shareCurrentLocation(reportId) {
+    const report = allReports.find(item => item.reportId === reportId);
+
+    if (!report) {
+        showNotice("Report could not be found for location sharing.", "error");
+        return;
+    }
+
+    const contactNumber = normalizeWhatsAppNumber(report.primaryContact);
+
+    if (!contactNumber) {
+        showNotice("This report does not have a valid contact number for WhatsApp sharing.", "error");
+        return;
+    }
+
+    if (!window.isSecureContext) {
+        showNotice("GPS sharing needs a secure page. GitHub Pages should work over HTTPS.", "error");
+        return;
+    }
+
+    if (!navigator.geolocation) {
+        showNotice("This browser does not support GPS location access.", "error");
+        return;
+    }
+
+    showNotice("Requesting your current GPS location...", "info");
+
+    navigator.geolocation.getCurrentPosition(async position => {
+        const message = getLocationShareMessage(
+            report,
+            position.coords.latitude,
+            position.coords.longitude
+        );
+        const whatsappUrl = `https://wa.me/${contactNumber}?text=${encodeURIComponent(message)}`;
+        const copied = await copyShareMessage(message);
+
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+        showNotice(
+            copied
+                ? "WhatsApp draft opened and the GPS message was copied. Review it and press Send."
+                : "WhatsApp draft opened. Review the GPS message and press Send.",
+            "success"
+        );
+    }, handleLocationError, {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 60000,
+    });
 }
 
 function getReportTypes(report) {
@@ -120,6 +245,7 @@ function getFilteredReports() {
 function renderReports() {
     const reports = getFilteredReports().slice().reverse();
     reportCount.textContent = `${reports.length} report${reports.length === 1 ? "" : "s"}`;
+    clearNotice();
 
     if (reports.length === 0) {
         reportList.innerHTML = `<div class="empty">No sample reports match the current filters.</div>`;
@@ -130,7 +256,8 @@ function renderReports() {
         const requestTypeBadges = getReportTypes(report)
             .map(type => `<span class="badge">${escapeHtml(formatRequestTypeLabel(type))}</span>`)
             .join("");
-
+        const contactNumber = normalizeWhatsAppNumber(report.primaryContact);
+        const canShareLocation = Boolean(contactNumber);
         const timestamp = report.messageTimestamp
             ? new Date(report.messageTimestamp).toLocaleString()
             : "Unknown time";
@@ -142,7 +269,12 @@ function renderReports() {
                         ${requestTypeBadges}
                         <span class="badge urgency-${escapeHtml(report.urgency)}">${escapeHtml(report.urgency)} urgency</span>
                     </div>
-                    <div class="report-id">${escapeHtml(report.reportId)}</div>
+                    <div class="report-actions">
+                        <div class="report-id">${escapeHtml(report.reportId)}</div>
+                        <button class="location-share-btn" type="button" data-share-report-id="${escapeHtml(report.reportId)}" ${canShareLocation ? "" : "disabled"}>
+                            Share My GPS
+                        </button>
+                    </div>
                 </div>
                 <div class="report-grid">
                     <div class="detail">
@@ -170,6 +302,16 @@ function renderReports() {
             </article>
         `;
     }).join("");
+
+    document.querySelectorAll(".location-share-btn").forEach(button => {
+        button.addEventListener("click", event => {
+            const reportId = event.currentTarget.getAttribute("data-share-report-id");
+            if (!reportId) {
+                return;
+            }
+            shareCurrentLocation(reportId);
+        });
+    });
 }
 
 async function loadReports() {
@@ -186,4 +328,5 @@ searchBox.addEventListener("input", renderReports);
 
 loadReports().catch(error => {
     reportList.innerHTML = `<div class="empty">Failed to load showcase data: ${escapeHtml(error.message)}</div>`;
+    showNotice("Showcase data failed to load. Please refresh and try again.", "error");
 });
