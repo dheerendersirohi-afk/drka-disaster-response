@@ -16,6 +16,7 @@ const reportCount = document.getElementById("reportCount");
 const filterType = document.getElementById("filterType");
 const filterUrgency = document.getElementById("filterUrgency");
 const searchBox = document.getElementById("searchBox");
+const DATA_VERSION = "20260427-40";
 
 let allReports = [];
 
@@ -172,7 +173,7 @@ function renderReports() {
 }
 
 async function loadReports() {
-    const response = await fetch("./sample-reports.json");
+    const response = await fetch(`./sample-reports.json?v=${DATA_VERSION}`, { cache: "no-store" });
     allReports = await response.json();
     renderTypeOptions();
     renderStats(allReports);
