@@ -1,0 +1,10 @@
+langchain
+langchain-sarvamcloud
+langchain-community
+requests
+beautifulsoup4
+streamlit
+pandas
+numpy
+scikit-learn
+python-dotenv

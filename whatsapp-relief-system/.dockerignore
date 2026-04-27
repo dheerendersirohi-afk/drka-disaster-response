@@ -1,0 +1,9 @@
+node_modules
+.env
+.wwebjs_auth
+.wwebjs_cache
+api-reports
+reports
+*.log
+server.out.log
+server.err.log

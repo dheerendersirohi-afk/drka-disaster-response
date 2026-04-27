@@ -1,0 +1,16 @@
+.env
+*.log
+__pycache__/
+*.pyc
+
+whatsapp-relief-system/node_modules/
+whatsapp-relief-system/.env
+whatsapp-relief-system/.wwebjs_auth/
+whatsapp-relief-system/.wwebjs_cache/
+whatsapp-relief-system/api-reports/
+whatsapp-relief-system/reports/
+whatsapp-relief-system/server.out.log
+whatsapp-relief-system/server.err.log
+
+server.out.log
+server.err.log
