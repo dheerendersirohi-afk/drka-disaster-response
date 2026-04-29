@@ -17,7 +17,8 @@ const filterType = document.getElementById("filterType");
 const filterUrgency = document.getElementById("filterUrgency");
 const searchBox = document.getElementById("searchBox");
 const statusNotice = document.getElementById("statusNotice");
-const DATA_VERSION = "20260427-41";
+const DATA_VERSION = "20260429-42";
+const EXPECTED_SAMPLE_REPORT_COUNT = 40;
 
 let allReports = [];
 
@@ -320,6 +321,16 @@ async function loadReports() {
     renderTypeOptions();
     renderStats(allReports);
     renderReports();
+
+    if (allReports.length < EXPECTED_SAMPLE_REPORT_COUNT) {
+        showNotice(
+            `Only ${allReports.length} of ${EXPECTED_SAMPLE_REPORT_COUNT} sample reports loaded. Refresh the page to clear the old GitHub Pages cache.`,
+            "error"
+        );
+        return;
+    }
+
+    showNotice(`Loaded all ${allReports.length} sample disaster reports.`, "success");
 }
 
 filterType.addEventListener("change", renderReports);

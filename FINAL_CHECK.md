@@ -6,7 +6,7 @@ This file is the quick handoff for the DRKA disaster response project.
 
 - DRKA-linked dashboard: `http://localhost:3000/?source=drka`
 - Local API: `http://localhost:3000/api/disaster-reports`
-- GitHub Pages showcase: `https://dheerendersirohi-afk.github.io/drka-disaster-response/?v=20260427-41`
+- GitHub Pages showcase: `https://dheerendersirohi-afk.github.io/drka-disaster-response/?v=20260429-42`
 - GitHub repository: `https://github.com/dheerendersirohi-afk/drka-disaster-response`
 
 ## Current Status
@@ -75,5 +75,5 @@ npm start
 
 ## Last Known Good Public URLs
 
-- Showcase: `https://dheerendersirohi-afk.github.io/drka-disaster-response/?v=20260427-41`
+- Showcase: `https://dheerendersirohi-afk.github.io/drka-disaster-response/?v=20260429-42`
 - Deploy button: `https://render.com/deploy?repo=https://github.com/dheerendersirohi-afk/drka-disaster-response`
